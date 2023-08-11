@@ -10,6 +10,7 @@
   --border-tabs: #e7e9fc;
   --clients: #8e8f99;
   --social-icons: #31d0aa;
+  --modal-bg: #fcfcfc;
 }
 
 body {
@@ -116,9 +117,7 @@ ol {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--color-main-text);
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 
   display: block;
@@ -164,9 +163,7 @@ ol {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--color-secondary-text);
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts .link:hover,
@@ -228,9 +225,7 @@ ol {
   margin: 0 auto;
   min-width: 169px;
   height: 56px;
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-hero .hero-button:hover,
@@ -385,9 +380,7 @@ ol {
   border-radius: 50%;
   color: var(--color-tertiary-text);
   background-color: var(--accent-text);
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-list-item .link:hover,
@@ -433,9 +426,8 @@ ol {
   justify-content: center;
   align-items: center;
   color: var(--clients);
-  transition-property: border, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+  color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-item .link:hover,
@@ -481,9 +473,9 @@ ol {
   align-items: center;
   border-radius: 4px;
   border: 1px solid #e7e9fc;
-  transition-property: background-color, color, border;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+  color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+  border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-portfolio .portfolio-tabs:hover {
@@ -554,9 +546,6 @@ ol {
 .galery-link:hover .overlay,
 .galery-link:focus .overlay {
   transform: translateY(0);
-  /* box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
-    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
-    0px 1px 6px 0px rgba(46, 47, 66, 0.08); */
 }
 
 .portfolio-text {
@@ -656,9 +645,8 @@ ol {
   border-radius: 50%;
   color: var(--color-tertiary-text);
   background-color: var(--accent-text);
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .social-icons-item .link:hover,
@@ -668,4 +656,73 @@ ol {
 
 .social-icons {
   fill: currentColor;
+}
+
+/**
+  |============================
+  | Modal-backdrop
+  |============================
+*/
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--navyblue-modal, rgba(46, 47, 66, 0.4));
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 408px;
+  height: 584px;
+  flex-shrink: 0;
+  transform: translate(-50%, -50%) scale(1);
+  border-radius: 4px;
+  background-color: var(--modal-bg);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--color-main-text);
+  background-color: var(--border-tabs);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.x-modal-close {
+  fill: currentColor;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--primary-bg-color);
+  background-color: var(--accent-pressed);
+  border: none;
 }
