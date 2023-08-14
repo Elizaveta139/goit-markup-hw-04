@@ -360,7 +360,7 @@ ol {
   letter-spacing: 0.02em;
   color: var(--color-secondary-text);
   text-align: center;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .team-list-icons {
